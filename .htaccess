@@ -1,0 +1,11 @@
+IndexIgnore *
+ErrorDocument 404 /src/pages/erro-404.php
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ ./web/front.php?rewrite=$1 [QSA,NC]
+
+# REGRA DO DIRETORIO RAIZ
+RewriteCond %{REQUEST_URI} !web/
+RewriteRule (.*) ./web/$1 [L]
